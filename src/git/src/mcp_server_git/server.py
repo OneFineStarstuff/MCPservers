@@ -155,6 +155,15 @@ def git_init(repo_path: str) -> str:
         return f"Error initializing repository: {str(e)}"
 
 def git_show(repo: git.Repo, revision: str) -> str:
+    """Return a formatted string of commit details and its diff.
+    
+    Args:
+        repo (git.Repo): The repository object.
+        revision (str): The commit revision to show.
+    
+    Returns:
+        str: A string containing commit details and the diff.
+    """
     commit = repo.commit(revision)
     output = [
         f"Commit: {commit.hexsha!r}\n", f"Author: {commit.author!r}\n", f"Date: {commit.authored_datetime!r}\n", f"Message: {commit.message!r}\n"
